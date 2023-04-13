@@ -5,7 +5,7 @@ const baseUrl = 'localhost:8000'
 export const useAuthStore = defineStore('auth',  {
     state: () => {
         return {
-            token: useLocalStorage('token', 'null').value,
+            token: useCookie('token').value,
         }
     },
     persist: {
@@ -14,7 +14,7 @@ export const useAuthStore = defineStore('auth',  {
         }),
     },
     hydrate(state,initialState ) {
-        state.token = useLocalStorage('token', 'null').value
+        state.token = useCookie<string>('token').value
     }
     /*
         const auth: Ref<{user:Object, token:string}> = ref({

@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "Inter";
+    src: url("~/assets/fonts/Inter-Black.ttf") format('truetype');
+}
+
+
+p{
+    font: normal normal 16px/16px Inter;
+    text-align: left;
+}
+
+span {
+    font: normal normal 16px/16px Inter;
+    text-align: left;
+}
+
+h1{
+    font: normal normal 44px/44px Inter;
+}
+
+h2 {
+    font: normal normal 32px/32px Inter;
+}
+
+h3{
+    font: normal normal 24px/24px Inter;
+}

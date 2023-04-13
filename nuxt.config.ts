@@ -5,8 +5,16 @@ export default defineNuxtConfig({
     buildModules: [
         // https://go.nuxtjs.dev/typescript
         '@nuxt/typescript-build',
+        '@nuxtjs/vuetify', { optionsPath: './vuetify.options.js' }
     ],
-    modules: ['@pinia/nuxt','@pinia-plugin-persistedstate/nuxt',],
+    build: {
+        transpile: ['vuetify'],
+    },
+    css: ['vuetify/lib/styles/main.sass', '~/assets/Fonts.css'],
+    modules: [
+        '@pinia/nuxt',
+        '@pinia-plugin-persistedstate/nuxt',
+    ],
     title: 'My Nuxt App',
     
 })

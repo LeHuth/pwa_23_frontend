@@ -1,6 +1,7 @@
 <template>
     <div>
         <p>Index page</p>
+        <v-btn @click="getRecipes()">V-btn</v-btn>
         <button @click="login()">CREDS</button>
         <button @click="$router.push('/foo')">next page</button>
     </div>
@@ -19,11 +20,22 @@ const login = async () => {
         }
     }).then((res) => {
         console.log(res.data.value.token)
-        const state = useStorage('token', 'no-token')
-        state.value = res.data.value.token
+        const cookie = useCookie<string>('token')
+        cookie.value = res.data.value.token
         const authStore = useAuthStore()
-        authStore.token = res.data.value.token
+        authStore.token = cookie.value
         console.log(authStore.token, 'store token')
+    })
+}
+
+const getRecipes = async () => {
+    useFetch('http://localhost:8000/api/recipes/',{
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + useCookie('token').value
+        },
+    }).then((res) => {
+        console.log(res.data.value)
     })
 }
 
