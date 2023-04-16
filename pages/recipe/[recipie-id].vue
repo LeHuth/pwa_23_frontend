@@ -12,20 +12,7 @@
         <div class="d-flex justify-space-between">
 
             <div style="max-width: 600px">
-                <h2 class="mb-8">Ingredients</h2>
-                <div v-for="f_component in ingredients_mock.food_components">
-                    <h3 class="mb-3">{{ f_component.name }}</h3>
-                    <div>
-                        <v-checkbox v-for="ingredient in f_component.ingredients"
-                                    class="font-size-14"
-                                    density="compact"
-                                    hide-details>
-                            <template v-slot:label>
-                                <span>{{ ingredient }}</span>
-                            </template>
-                        </v-checkbox>
-                    </div>
-                </div>
+                <DisplayFoodComponents :ingredients_mock="ingredients_mock"/>
                 <h2 class="mt-12 mb-8">Instruction</h2>
                 <div v-for="(step, index) in ingredients_mock.steps" class="mb-8 d-flex" style="gap: 15px">
                     <v-icon :icon="`mdi-numeric-${index+1}`" size="28"/>
@@ -51,6 +38,7 @@
 
 <script lang="ts" setup>
 import TimeInfo from "@/components/recipe/TimeInfo.vue";
+import DisplayFoodComponents from "~/components/recipe/DisplayFoodComponents.vue";
 
 definePageMeta({
     title: 'recipe-detail',
